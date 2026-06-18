@@ -1,0 +1,8 @@
+You are a retail industry expert and want to solve a key problem in supermarket retail. Are my branches readily stocking my popular products?
+
+Analyse the sale data of the shops. Build a web based tool that helps me filter by department, date range, and by shop code, the products that are top selling overall, but not in the selected shop code.
+
+hint, the final table should give me products that a particular shop, example 184, does not show sale of. This means a popular product is not selling at this shop.
+
+Please consider ABC analysis
+

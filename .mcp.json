@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "./data/missing_winners.db"],
+      "comment": "Optional: only needed if/when the project moves from in-memory pandas to a persisted SQLite store (see CLAUDE.md - not required for current dataset size). Lets Claude inspect aggregation tables directly with SQL during development without writing throwaway scripts."
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "comment": "Useful for pulling FastAPI/Pandas/Recharts documentation pages on demand while implementing endpoints, without leaving Claude Code."
+    }
+  }
+}

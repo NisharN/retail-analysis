@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(pytest:*)",
+      "Bash(uvicorn:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Read(//home/claude/missing-winners/**)",
+      "Edit(//home/claude/missing-winners/**)",
+      "Write(//home/claude/missing-winners/**)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Read(//home/claude/missing-winners/.env)",
+      "Read(//home/claude/missing-winners/.env.*)",
+      "Write(//home/claude/missing-winners/data/testdata1.xlsx)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PIP_BREAK_SYSTEM_PACKAGES": "1"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'f=\"$CLAUDE_TOOL_INPUT_FILE_PATH\"; if [[ \"$f\" == *.py ]]; then python3 -m py_compile \"$f\" 2>&1 || echo \"WARNING: $f failed to compile\"; fi'"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "claude-opus-4-6"
+}
